@@ -1,3 +1,46 @@
+//let Vue = require("vue");
+
+//import Vue from 'vue'
+//import vmApp from './app.vue'
+//new Vue(vmApp).$mount('#app')
+
+let axios = require("axios");
+
+new Vue({
+    el: "#app",
+    data: {
+        "pageList": [],
+        "newPageName": ""
+    },
+    methods: {
+        createPage() {
+            axios
+                .post("./api/createNewHtmlPage.php", { "name": this.newPageName })
+                .then(() => this.updatePageList())
+        },
+        updatePageList() {
+            axios
+                .get("./api/")
+                .then((response) => {
+                    this.pageList = response.data
+                })
+        },
+        deletePage(page) {
+            axios
+                .post("./api/deleteHtmlPage.php", { "name": page })
+                .then(() => this.updatePageList())
+        }
+    },
+    created() {
+        axios
+            .get("./api/")
+            .then((response) => {
+                this.pageList = response.data
+            })
+    }
+});
+
+/*
 const $ = require("jquery");
 
 function getPagesList() {
@@ -35,3 +78,4 @@ $("#container").on("click", ".del", (e) => {
         alert("Такой страницы не существует!");
     })
 });
+*/
