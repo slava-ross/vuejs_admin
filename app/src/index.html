@@ -12,8 +12,8 @@
     <div id="app">
         <input type="text" v-model="newPageName">
         <button v-on:click="createPage">Создать страницу</button>
-        <div v-for="page in pageList">
-            <h1>{{ page }} <a href="#" v-on:click="deletePage(page)">[X]</a></h1>
+        <div v-for="(page, index) in pageList">
+            <h1>{{index+1}} - {{ page }} <a href="#" v-on:click="deletePage(page)">[X]</a></h1>
         </div>
         
     </div>
