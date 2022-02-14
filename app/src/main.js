@@ -1,9 +1,18 @@
+const Editor = require("./editor");
+
+window.editor = new Editor();
+
+window.onload = () => {
+    window.editor.open("index.html");
+}
+
+
 //let Vue = require("vue");
 
 //import Vue from 'vue'
 //import vmApp from './app.vue'
 //new Vue(vmApp).$mount('#app')
-
+/*
 let axios = require("axios");
 
 new Vue({
@@ -39,6 +48,7 @@ new Vue({
             })
     }
 });
+*/
 
 /*
 const $ = require("jquery");
